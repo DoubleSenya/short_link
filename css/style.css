@@ -1,0 +1,29 @@
+input {
+    outline: none;
+    border: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    margin-top: 300px;
+}
+
+.result {
+    margin-top: 50px;
+    background-color: rgb(110, 144, 246);
+    border: 1px solid rgb(69, 111, 240);
+    height: 50px;
+    border-radius: 10px;
+    width: 100%;
+    display: none;
+}
+
+.form {
+    width: 100%;
+}
