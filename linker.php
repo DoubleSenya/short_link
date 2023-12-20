@@ -15,10 +15,10 @@
     use Linker\ShortLinker;
     use Models\Url;
 
-    $link = $_POST['link'];
+    $originalLink = $_POST['link'];
 
-    $linker = new ShortLinker($link);
-    $shortLink = $linker->make($link);
+    $linker = new ShortLinker($originalLink);
+    $shortLink = $linker->make();
 
     $url = new Url();
     $url->setOriginal($originalLink);
@@ -26,11 +26,17 @@
     $isSaved = $url->save();
 
     if (!$isSaved)
-        return [
+    {
+        $response = [
             'success' => false,
         ];
+    }
+    else
+    {
+        $response = [
+            'success' => true,
+            'result' => $shortLink,
+        ];
+    }
 
-    return [
-        'success' => true,
-        'result' => $shortLink,
-    ];
+    echo json_encode($response);

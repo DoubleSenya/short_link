@@ -12,7 +12,7 @@
         }
     }); 
 
-    use Redirect\Redirect;
+    use Route\Redirect;
 
     $shortLink = $_GET['key'];
 

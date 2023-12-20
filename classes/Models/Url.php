@@ -29,7 +29,7 @@ class Url
 
     public function save()
     {
-        if (!isset($this->original) || !isset($this->short))
+        if (empty($this->original) || empty($this->short))
             return false;
 
         db()->insertUrls($this->original, $this->short);

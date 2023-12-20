@@ -3,7 +3,7 @@
 return [
 
     'db' => [
-        'host' => 'localhost:3306',
+        'host' => 'localhost',
         'name' => 'linker',
         'login' => 'root',
         'password' => 'root',
