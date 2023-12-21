@@ -1,7 +1,13 @@
-DirectoryIndex index.php
-Options -Indexes
-php_flag register_globals off
+Options All -Indexes
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh|json)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+<IfModule mod_rewrite.c>
 RewriteEngine on
-
-#redirect
-RewriteRule ^-(.*) /redirect.php?key=$1 [L]
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /redirect.php?key=$1 [QSA,L]
+</IfModule>
+ AddDefaultCharset UTF-8

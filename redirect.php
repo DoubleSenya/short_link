@@ -12,8 +12,9 @@
         }
     }); 
 
-    use Route\Redirect;
+    use Services\RedirectService;
 
-    $shortLink = $_GET['key'];
+    $shortLink = htmlspecialchars($_GET['key']);
 
-    Redirect::go($shortLink);
+    $service = new RedirectService();
+    $service->handle($shortLink);

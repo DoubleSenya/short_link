@@ -4,14 +4,8 @@ namespace Linker;
 
 class ShortLinker
 {
-    private $originalLink;
 
     private $key = 'qwertyuiopasdfghjklzxcvbnm1234567890';
-
-    public function __construct($originalLink)
-    {
-        $this->originalLink = $originalLink;
-    }
 
     public function make()
     {

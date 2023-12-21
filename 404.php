@@ -9,15 +9,7 @@
     </head>
     <body class="body">
         <div class="content">
-            <form class="form">
-                <input class="input-link" type="text" name="link" placeholder="Введите ссылку" require/>
-                <button class="submit" type="button" id="submitFormBtn">Получить</button>
-            </form>
-            
-            <div class="result" id="resultBlock">
-                <div class="label">Ваша ссылка:</div>
-                <div class="result-url" id="resultUrl"></div>
-            </div>
+            Страница не найдена!
         </div>
     </body>
 

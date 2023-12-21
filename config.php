@@ -6,6 +6,6 @@ return [
         'host' => 'localhost',
         'name' => 'linker',
         'login' => 'root',
-        'password' => 'root',
+        'password' => '',
     ],
 ];

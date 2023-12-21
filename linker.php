@@ -12,31 +12,28 @@
         }
     });
 
-    use Linker\ShortLinker;
-    use Models\Url;
 
-    $originalLink = $_POST['link'];
+    use Services\LinkerService;
+    use Validators\UrlValidator;
 
-    $linker = new ShortLinker($originalLink);
-    $shortLink = $linker->make();
+    $originalLink = htmlspecialchars($_POST['link']);
 
-    $url = new Url();
-    $url->setOriginal($originalLink);
-    $url->setShort($shortLink);
-    $isSaved = $url->save();
+    $validator = new UrlValidator($originalLink);
 
-    if (!$isSaved)
+    if(!$validator->check())
     {
-        $response = [
+        echo json_encode([
             'success' => false,
-        ];
-    }
-    else
-    {
-        $response = [
-            'success' => true,
-            'result' => $shortLink,
-        ];
+            'code' => 1,
+        ]);
+
+        return;
     }
 
-    echo json_encode($response);
+    $service = new LinkerService();
+    $result = $service->handle($originalLink);
+
+    echo json_encode(([
+        'success' => true,
+        'result' => 'http://' . $_SERVER['HTTP_HOST'] . '/' . $result,
+    ]));
